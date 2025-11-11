@@ -1,0 +1,38 @@
+// C++ code
+//
+
+const int sensorPin=A0;
+const int sensorPower=8;
+const int LED1=4;
+const int LED2=3;
+const int LED3=2;
+void setup(){
+ pinMode(LED1,OUTPUT);
+ pinMode(LED2,OUTPUT); 
+ pinMode(LED3,OUTPUT); 
+ pinMode(sensorPower,OUTPUT); 
+ Serial.begin(9600);
+}
+void loop(){
+  digitalWrite(sensorPower,HIGH);
+  delay(10);
+  int sensor=analogRead(sensorPin);
+  digitalWrite(sensorPower,LOW);
+  Serial.println(sensor);
+  if(sensor>800){
+    digitalWrite(LED1,LOW);
+    digitalWrite(LED2,LOW);
+    digitalWrite(LED3,HIGH);
+  }else if(sensor<500){
+    digitalWrite(LED1,HIGH);
+        digitalWrite(LED2,LOW);
+    digitalWrite(LED3,LOW);
+  }else{
+        digitalWrite(LED1,LOW);
+    digitalWrite(LED2,HIGH);
+    digitalWrite(LED1,LOW);
+  }
+  delay(1000);
+  
+  
+}
