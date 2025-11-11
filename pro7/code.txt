@@ -1,0 +1,23 @@
+#define PH_PIN A0
+
+void setup(){
+ Serial.begin(9600);
+  delay(1000);
+}
+void loop(){
+  int sensorval=analogRead(PH_PIN);
+  Serial.print("Ph-value:");
+  float voltage=sensorval*(5.0/1023.0);
+  float ph=voltage*2.8;
+  Serial.print(ph);
+  Serial.print("-->");
+  if(ph<6.5){
+    Serial.println("Acidic");
+  }else if(ph>7.5){
+    Serial.println("Basic");
+  }else{
+    Serial.println("Neutral");
+  }
+  delay(1000);
+}
+  
