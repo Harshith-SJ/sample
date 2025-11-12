@@ -1,0 +1,21 @@
+const int sensorPin=A0;
+const int LED1=A1;
+
+void setup(){
+ Serial.begin(9600);
+  pinMode(LED1,OUTPUT);
+}
+void loop(){
+ int sensorval=analogRead(sensorPin);
+  Serial.print("Sensorvalue=");
+  Serial.print(sensorval);
+  Serial.print("-->");
+  if(sensorval<200){
+    digitalWrite(LED1,LOW);
+    Serial.println("clean air");
+  }else{
+    digitalWrite(LED1,HIGH);
+    Serial.println("smoke detected");
+  }
+  delay(1000);
+}
